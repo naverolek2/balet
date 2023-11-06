@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balety</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body >
+    <h1>Godziny otwarcia od 8:00 do 20:00</h1>
+    <h4>Minimalny czas wypożyczenia to 1 godzina</h4>
+    <h4>Czas zakończenia i rozpoczęcia mogą być tylko pełnymi godzinami</h4>
+     <form action="obliczane.php" method="post">
+        
+        <label for="numerSali">Wybierz numer sali</label>
+        <select name="numerSali" id="numerSali">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select><br>
+        <label for="data">Podaj datę</label>
+         <input type="date" name="data" id="data"><br>
+         <label for="od">Podaj godzinę rozpoczęcia</label>
+         <input type="time"  name="od" step="3600" id="od" min="8:00:00" max="19:00"><br>
+         <label for="do">Podaj godzinę zakończenia</label>
+         <input type="time"  step="3600" name="do" id="do" min="9:00:00" max="20:00"><br>
+         <label for="telefon">Podaj numer telefonu w formacie 123-456-789.</label><br>
+         <input type="tel" name="telefon" id="telefon" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"><br>
+         <input type="submit" value="Wyślij zapytanie">
+
+     </form>
+     <script>
+        // Ten skrypt zmienia automatycznie minuty na 00 w inputach od i do kiedy rezerwacja jest
+        let odInput = document.getElementById('od');
+        let doInput = document.getElementById('do');
+
+
+        odInput.addEventListener('input', (e) => {
+        let hour = e.target.value.split(':')[0]
+        e.target.value = `${hour}:00`
+})
+        doInput.addEventListener('input', (e) => {
+        let hour = e.target.value.split(':')[0]
+        e.target.value = `${hour}:00`
+})
+
+     </script>
+     <form action="rezerwacje.php" method="post" id="formSpraw">
+        <label for="data2">Podaj datę, którą chcesz sprawdzić</label><br>
+        <input type="date" name="data2" id="data2"><br>
+
+        <input type="submit" value="Sprawdź">
+     </form>
+
+
+</body>
+</html>
