@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 06, 2023 at 07:21 PM
+-- Generation Time: Lis 06, 2023 at 07:51 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -34,6 +34,15 @@ CREATE TABLE `rezerwacje` (
   `numer_Sali` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `rezerwacje`
+--
+
+INSERT INTO `rezerwacje` (`id_Sali`, `data`, `czas_trwania`, `numer_Sali`) VALUES
+(1, '2023-11-08', '03:00:00', 1),
+(2, '2023-11-07', '05:00:00', 3),
+(3, '2023-11-30', '05:00:00', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +57,15 @@ CREATE TABLE `sale` (
   `data` date NOT NULL,
   `czas_Trwania` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sale`
+--
+
+INSERT INTO `sale` (`id_Rezerwacji`, `numer_Sali`, `godzina_Rozpoczecia`, `godzina_Zakonczenia`, `data`, `czas_Trwania`) VALUES
+(1, 1, '11:00:00', '14:00:00', '2023-11-08', '03:00:00'),
+(2, 3, '10:00:00', '15:00:00', '2023-11-07', '05:00:00'),
+(3, 3, '10:00:00', '15:00:00', '2023-11-30', '05:00:00');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -73,13 +91,13 @@ ALTER TABLE `sale`
 -- AUTO_INCREMENT for table `rezerwacje`
 --
 ALTER TABLE `rezerwacje`
-  MODIFY `id_Sali` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Sali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `id_Rezerwacji` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Rezerwacji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
